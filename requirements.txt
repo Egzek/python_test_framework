@@ -1,0 +1,9 @@
+black
+flake8
+pytest
+requests
+selenium
+tox
+python-dotenv
+webdriver-manager
+pytest-xdist
