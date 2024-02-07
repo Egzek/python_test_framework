@@ -39,3 +39,16 @@ class InventoryPageLocators:
     @classmethod
     def add_to_cart_button_from_inventory(cls, item: tuple) -> tuple:
         return (By.XPATH, f"//a[@id='{item[1]}']/parent::div/parent::div//button")
+
+
+class CartPageLocators:
+    checkout_button = (By.ID, "checkout")
+    continue_shopping = (By.ID, "continue-shopping")
+
+
+class CheckoutPageLocators:
+    pass
+
+
+class NavigationLocators:
+    shopping_cart_container = (By.ID, "shopping_cart_container")

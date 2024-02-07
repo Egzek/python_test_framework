@@ -3,10 +3,10 @@ from resources.locators import (
     GeneralUrlLocators,
 )
 from resources.models.user import User
-from resources.PO.base_page import BasePage
+from resources.PO.navigation import Navigation
 
 
-class HomePage(BasePage):
+class HomePage(Navigation):
     def __init__(self, driver):
         super().__init__(driver)
         if self.driver.current_url == ("data:," or "about:blank"):
