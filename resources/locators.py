@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
 
-from helpers.config_helper import get_dotenv_config
+from helpers.config_helper import Config
 
 
 class GeneralUrlLocators:
-    home_page_url = get_dotenv_config().get("HOMEPAGE")
+    home_page_url = Config().get_dotenv_config().get("HOMEPAGE")
 
 
 class HomePageLocators:
