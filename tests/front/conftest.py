@@ -5,8 +5,10 @@ from selenium import webdriver
 from selenium.common.exceptions import InvalidSessionIdException
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.remote.webdriver import WebDriver
 from webdriver_manager.chrome import ChromeDriverManager
 
+from helpers.test_helpers import login_given_user
 from resources.credentials.sample_credentials import Credentials
 from resources.models.user import User
 
@@ -54,3 +56,15 @@ def get_default_user(request) -> None:
         password=Credentials.default_user_password,
     )
     request.cls.user_default = user_default
+
+
+@pytest.fixture(scope="function")
+def login_default_user(setup: WebDriver) -> None:
+    user = User(
+        email=Credentials.default_user_mail,
+        password=Credentials.default_user_password,
+    )
+    login_given_user(
+        driver=setup,
+        user=user,
+    )
