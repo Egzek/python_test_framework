@@ -9,7 +9,9 @@ class TestLogin:
     @screenshot_decorator
     def test_login_username(self):
         """
-        1. sample
+        1. Get HomePage
+        2. Log in user
+        3. Assert user is logged in
         """
         page = HomePage(self.driver)
         page.login_user(self.user_default)
