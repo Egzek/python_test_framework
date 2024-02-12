@@ -49,21 +49,22 @@ def setup(request):
         driver.quit()
 
 
-@pytest.fixture(scope="function", autouse=True)
-def get_default_user(request) -> None:
-    user_default = User(
+def set_default_user():
+    return User(
         email=Credentials.default_user_mail,
         password=Credentials.default_user_password,
     )
+
+
+@pytest.fixture(scope="function", autouse=True)
+def get_default_user(request) -> None:
+    user_default = set_default_user()
     request.cls.user_default = user_default
 
 
 @pytest.fixture(scope="function")
 def login_default_user(setup: WebDriver) -> None:
-    user = User(
-        email=Credentials.default_user_mail,
-        password=Credentials.default_user_password,
-    )
+    user = set_default_user()
     login_given_user(
         driver=setup,
         user=user,

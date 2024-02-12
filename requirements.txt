@@ -7,3 +7,4 @@ tox
 python-dotenv
 webdriver-manager
 pytest-xdist
+mimesis

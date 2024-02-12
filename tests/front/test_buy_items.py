@@ -1,5 +1,7 @@
 import pytest
 
+from mimesis.locales import Locale
+
 from helpers.screenshot_listener import screenshot_decorator
 from resources.PO.cart_page import CartPage
 from resources.PO.checkout_page import CheckoutPage
@@ -30,4 +32,6 @@ class TestBuyItems:
         page = CartPage(self.driver)
         page.go_to_checkout()
         page = CheckoutPage(self.driver)
-        pass
+        user_checokut = page.create_user_data_for_checkout(Locale.EN)
+        page.finish_checkout(user_checokut)
+        page.assert_checkout_sucessfull()

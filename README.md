@@ -9,7 +9,7 @@ Here, as it uses publicly available data and for demo purposes, it is kept in re
 
 Several important things:
 - Tests use the [Py.test](https://docs.pytest.org/en/latest/) framework as test runner.
-- Repo is formatted with [black](https://github.com/psf/black)
+- Repo is formatted with [black](https://github.com/psf/black).
 - [flake8](https://flake8.pycqa.org/en/latest/) is used for styling correction.
 - [Typing hints](https://docs.python.org/3/library/typing.html) are very useful for code clearance and error prune code.
 

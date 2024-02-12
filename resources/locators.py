@@ -36,6 +36,13 @@ class CartPageLocators:
 
 
 class CheckoutPageLocators:
+    first_name_field = (By.ID, "first-name")
+    last_name_field = (By.ID, "last-name")
+    zip_code_field = (By.ID, "postal-code")
+    continue_checkout = (By.ID, "continue")
+    finish_checkout = (By.ID, "finish")
+    cancel_checkout = (By.ID, "cancel")
+    checkout_succesfull_container = (By.XPATH, "//div[@id='checkout_complete_container']/h2[text()='Thank you for your order!']")
     pass
 
 
