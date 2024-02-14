@@ -23,11 +23,17 @@ class InventoryPageLocators:
     sauce_lab_tshirt_red = (By.ID, "item_3_title_link")
     sauce_lab_onesie = (By.ID, "item_2_title_link")
     inventory_items = (By.CLASS_NAME, "inventory_item")
-    add_to_cart_button_from_item_page = (By.XPATH, "//div[@id='inventory_item_container']//button")
+    add_to_cart_item_page = (By.XPATH, "//div[@id='inventory_item_container']//button[contains(@id,'add-to-cart')]")
+    remove_from_cart_item_page = (By.XPATH, "//div[@id='inventory_item_container']//button[contains(@id,'remove')]")
+    back_to_products = (By.ID, "back-to-products")
 
     @classmethod
     def add_to_cart_button_from_inventory(cls, item: tuple) -> tuple:
-        return (By.XPATH, f"//a[@id='{item[1]}']/parent::div/parent::div//button")
+        return (By.XPATH, f"//a[@id='{item[1]}']/parent::div/parent::div//button[contains(@id,'add-to-cart')]")
+
+    @classmethod
+    def remove_item_from_inventory(cls, item: tuple) -> tuple:
+        return (By.XPATH, f"//a[@id='{item[1]}']/parent::div/parent::div//button[contains(@id,'remove')]")
 
 
 class CartPageLocators:
@@ -48,3 +54,4 @@ class CheckoutPageLocators:
 
 class NavigationLocators:
     shopping_cart_container = (By.ID, "shopping_cart_container")
+    burger_menu_button = (By.ID, "react-burger-menu-btn")

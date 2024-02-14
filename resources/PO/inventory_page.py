@@ -24,4 +24,4 @@ class InventoryPage(Navigation):
         :param item_to_buy: Locator for item to buy
         """
         self.click_element(item_to_buy)
-        self.click_element(InventoryPageLocators.add_to_cart_button_from_item_page)
+        self.click_element(InventoryPageLocators.add_to_cart_item_page)

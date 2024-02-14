@@ -35,3 +35,20 @@ class TestBuyItems:
         user_checokut = page.create_user_data_for_checkout(Locale.EN)
         page.finish_checkout(user_checokut)
         page.assert_checkout_sucessfull()
+
+
+@pytest.mark.cart
+class TestCart:
+    @pytest.mark.parametrize("item", ITEM_LIST.values(), ids=ITEM_LIST.keys())
+    @screenshot_decorator
+    def test_add_and_remove_item_to_cart_from_item_page(self, login_default_user, item):
+        page = InventoryPage(self.driver)
+        page.add_item_from_item_page_to_cart(item)
+        page.click_element(InventoryPageLocators.remove_from_cart_item_page)
+
+    @pytest.mark.parametrize("item", ITEM_LIST.values(), ids=ITEM_LIST.keys())
+    @screenshot_decorator
+    def test_buy_item_from_inventory(self, login_default_user, item):
+        page = InventoryPage(self.driver)
+        page.add_item_from_inventory_to_cart(item)
+        page.click_element(InventoryPageLocators.remove_item_from_inventory(item))
