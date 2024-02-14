@@ -3,6 +3,17 @@ import pytest
 from datetime import datetime
 from pathlib import Path
 
+headless_mode = ["true", "false"]
+
+
+def pytest_addoption(parser):
+    parser.addoption(
+        "--headless",
+        default="true",
+        choices=sorted(headless_mode),
+        help="Set to true if you want to run test on local browser in headless mode",
+    )
+
 
 # Creating log files for each test
 @pytest.hookimpl(hookwrapper=True, tryfirst=True)

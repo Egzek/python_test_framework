@@ -17,12 +17,14 @@ class TestBuyItems:
     def test_buy_item_from_item_page(self, login_default_user, item):
         page = InventoryPage(self.driver)
         page.add_item_from_item_page_to_cart(item)
+        page.assert_element_visibility(InventoryPageLocators.remove_from_cart_item_page)
 
     @pytest.mark.parametrize("item", ITEM_LIST.values(), ids=ITEM_LIST.keys())
     @screenshot_decorator
     def test_buy_item_from_inventory(self, login_default_user, item):
         page = InventoryPage(self.driver)
         page.add_item_from_inventory_to_cart(item)
+        page.assert_element_visibility(InventoryPageLocators.remove_item_from_inventory(item))
 
     @screenshot_decorator
     def test_buy_backpack_from_item_page(self, login_default_user):
@@ -44,11 +46,16 @@ class TestCart:
     def test_add_and_remove_item_to_cart_from_item_page(self, login_default_user, item):
         page = InventoryPage(self.driver)
         page.add_item_from_item_page_to_cart(item)
+        page.assert_element_visibility(InventoryPageLocators.remove_from_cart_item_page)
         page.click_element(InventoryPageLocators.remove_from_cart_item_page)
+        page.assert_element_visibility(InventoryPageLocators.add_to_cart_item_page)
 
     @pytest.mark.parametrize("item", ITEM_LIST.values(), ids=ITEM_LIST.keys())
     @screenshot_decorator
     def test_buy_item_from_inventory(self, login_default_user, item):
         page = InventoryPage(self.driver)
         page.add_item_from_inventory_to_cart(item)
+        page.assert_element_visibility(InventoryPageLocators.remove_item_from_inventory(item))
         page.click_element(InventoryPageLocators.remove_item_from_inventory(item))
+        page.assert_element_visibility(InventoryPageLocators.add_to_cart_button_from_inventory(item))
+

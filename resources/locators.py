@@ -55,3 +55,4 @@ class CheckoutPageLocators:
 class NavigationLocators:
     shopping_cart_container = (By.ID, "shopping_cart_container")
     burger_menu_button = (By.ID, "react-burger-menu-btn")
+    get_back_to_inventory = (By.ID, "inventory_sidebar_link")

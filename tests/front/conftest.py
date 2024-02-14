@@ -25,6 +25,8 @@ browsers_options = {
 @pytest.fixture(params=browsers_options.keys(), scope="function", autouse=True)
 def setup(request):
     options = browsers_options[request.param]
+    if request.config.getoption("headless") == "true":
+        options.add_argument("--headless")
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()),
         options=options,
