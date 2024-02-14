@@ -58,4 +58,3 @@ class TestCart:
         page.assert_element_visibility(InventoryPageLocators.remove_item_from_inventory(item))
         page.click_element(InventoryPageLocators.remove_item_from_inventory(item))
         page.assert_element_visibility(InventoryPageLocators.add_to_cart_button_from_inventory(item))
-
