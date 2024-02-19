@@ -10,12 +10,31 @@ Several important things:
 - [flake8](https://flake8.pycqa.org/en/latest/) is used for styling correction.
 - [Typing hints](https://docs.python.org/3/library/typing.html) are very useful for code clearance and error prune code.
 
-## Usage
+## Installation
 Clone the repo. Then use:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+
+#### Pre-commit
+
+This repo is using pre-commit to check code analysis with [black](https://github.com/psf/black) and [flake8](https://flake8.pycqa.org/en/latest/).
+In order to run validation before each commit, use:
+
+```bash
+pre-commit install
+```
+This will add pre-commit to git hooks and perform the checks defined in `.pre-commit-config.yaml`
+
+Note: every Merge Request must pass code analysis to merge it.
+
+## Setting environment
+
+On default, tests are launched on **qa** environment. We can change it to some other env adding ```ENV=sample_env``` flag before tox/pytest i.e:
+
+`ENV=prod pytest -m login`
 
 I have provided the `.env.qa` file but we can have several envs like `.env.prod, .env.stage` etc.
 
@@ -24,18 +43,41 @@ Here, as it uses publicly available data and for demo purposes, it is kept in re
 
 
 ## Running tests
-To run the tests you can use either pytest itself or tox. Sample commands:
+To run the tests you can use either pytest itself or tox.
+
+#### Running all tests
+
+To run all the scripts type:
+```bash
+pytest . 
+```
+#### Running specific test
 
 ```bash
-tox file_name.py
-pytest file_name.py
-pytest -m sample_flag
+pytest tests/front/test_login.py
 ```
 
-On default, tests are launched on **qa** environment. We can change it to some other env adding ```ENV=sample_env``` flag before tox/pytest i.e:
+You can also use specific flag:
 
-`ENV=prod pytest -m login`
+```bash
+pytest -m login
+```
 
+#### Tox
+
+Tests can be run using tox, which creates virtual env with all dependencies installed for every run:
+
+```bash
+tox -- front/test_login.py
+```
+
+## Results/Logs
 
 For each test we save logs which can be found in the log folder. If test fails, picture is taken automatically and can be found in results/screenshots folder.
 
+## GitHub Actions
+
+This repo is using GitHub actions to check and validate each Merge Request:
+
+1. Confirm the code analysis is passing.
+2. Check if all tests are passing.
