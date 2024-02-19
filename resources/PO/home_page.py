@@ -7,7 +7,7 @@ from resources.PO.navigation import Navigation
 
 
 class HomePage(Navigation):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         if self.driver.current_url == ("data:," or "about:blank"):
             print(GeneralUrlLocators.home_page_url)

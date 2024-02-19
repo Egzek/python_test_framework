@@ -13,7 +13,7 @@ class Config(metaclass=Singleton):
     _env_path = ROOT() / "resources" / "envs"
     _available_config = {"qa", "prod"}
 
-    def __init__(self):
+    def __init__(self) -> None:
         env = os.environ.get("ENV")
         if env is None:
             env = "qa"
@@ -23,5 +23,5 @@ class Config(metaclass=Singleton):
         logger.debug(f"Running against {env} env")
         self.env = dotenv_values(f"{self._env_path}/.env.{env}")
 
-    def get_dotenv_config(self):
+    def get_dotenv_config(self) -> dict:
         return self.env

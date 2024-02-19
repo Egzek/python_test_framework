@@ -49,7 +49,6 @@ class CheckoutPageLocators:
     finish_checkout = (By.ID, "finish")
     cancel_checkout = (By.ID, "cancel")
     checkout_succesfull_container = (By.XPATH, "//div[@id='checkout_complete_container']/h2[text()='Thank you for your order!']")
-    pass
 
 
 class NavigationLocators:

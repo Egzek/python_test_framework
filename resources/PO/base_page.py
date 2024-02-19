@@ -12,7 +12,7 @@ from helpers.screenshot_listener import ScreenshotListener
 
 
 class BasePage:
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         self.driver = EventFiringWebDriver(driver, ScreenshotListener())
         self.wait_time = WebDriverWait(self.driver.wrapped_driver, 15)
 

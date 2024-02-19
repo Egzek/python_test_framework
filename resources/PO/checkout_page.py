@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class CheckoutPage(Navigation):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
 
     @staticmethod
@@ -29,12 +29,12 @@ class CheckoutPage(Navigation):
         logging.debug(f"Created checkout user: {user.first_name} {user.last_name}, zip-code: {user.zip_code}")
         return user
 
-    def finish_checkout(self, user: UserCheckout):
+    def finish_checkout(self, user: UserCheckout) -> None:
         self.input_text_to_element(user.first_name, CheckoutPageLocators.first_name_field)
         self.input_text_to_element(user.last_name, CheckoutPageLocators.last_name_field)
         self.input_text_to_element(user.zip_code, CheckoutPageLocators.zip_code_field)
         self.click_element(CheckoutPageLocators.continue_checkout)
         self.click_element(CheckoutPageLocators.finish_checkout)
 
-    def assert_checkout_sucessfull(self):
+    def assert_checkout_sucessfull(self) -> None:
         self.assert_element_visibility(CheckoutPageLocators.checkout_succesfull_container)

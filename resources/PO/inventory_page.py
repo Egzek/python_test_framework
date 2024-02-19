@@ -6,7 +6,7 @@ from resources.PO.navigation import Navigation
 
 
 class InventoryPage(Navigation):
-    def __init__(self, driver):
+    def __init__(self, driver) -> None:
         super().__init__(driver)
         if self.driver.current_url == ("data:," or "about:blank"):
             self.get_page(GeneralUrlLocators.home_page_url + "inventory")
