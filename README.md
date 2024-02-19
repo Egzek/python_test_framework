@@ -32,13 +32,13 @@ Note: every Merge Request must pass code analysis to merge it.
 
 ## Setting environment
 
-On default, tests are launched on **qa** environment. We can change it to some other env adding ```ENV=sample_env``` flag before tox/pytest i.e:
+On default, tests are launched on **qa** environment. We can change it to some other ENV adding ```ENV=sample_env``` flag before run command i.e:
 
 `ENV=prod pytest -m login`
 
-I have provided the `.env.qa` file but we can have several envs like `.env.prod, .env.stage` etc.
+I have provided the `.env.qa` file. We can have several ENV files like `.env.prod,` `.env.stage` etc.
 
-Note: normally .env file should **NOT** be kept in repo, but in some cloud service or other place.
+Note: normally .env file should **NOT** be kept in repo, but in protected cloud service or some other place.
 Here, as it uses publicly available data and for demo purposes, it is kept in repo.
 
 
