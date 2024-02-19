@@ -43,11 +43,11 @@ Here, as it uses publicly available data and for demo purposes, it is kept in re
 
 
 ## Running tests
-To run the tests you can use either pytest itself or tox.
+To run the tests, you can use either pytest or tox.
 
 #### Running all tests
 
-To run all the scripts type:
+To run all the scripts, type:
 ```bash
 pytest . 
 ```
@@ -65,7 +65,7 @@ pytest -m login
 
 #### Tox
 
-Tests can be run using tox, which creates virtual env with all dependencies installed for every run:
+Tests can be run using tox, which creates a virtual env with all dependencies installed for every run:
 
 ```bash
 tox -- front/test_login.py
@@ -73,7 +73,7 @@ tox -- front/test_login.py
 
 ## Results/Logs
 
-For each test we save logs which can be found in the log folder. If test fails, picture is taken automatically and can be found in results/screenshots folder.
+For each test we save logs which can be found in the log folder. If the test fails, a picture is taken automatically and can be found in results/screenshots folder.
 
 ## GitHub Actions
 
