@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 jobs:
-  validate:
+  check_mr:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,10 +20,10 @@ jobs:
       - name: Install Requirements
         run: pip install -r requirements.txt
 
-      - name: pre-commit
+      - name: Code analysis
         run: |
           pre-commit run -a
 
-      - name: pytest check
+      - name: Run tests
         run: |
           pytest .
